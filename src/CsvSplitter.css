@@ -1,0 +1,78 @@
+.splitter-container {
+    max-width: 600px;
+    margin: 200px auto;
+    padding: 30px;
+    border: #454545 1px solid;
+    border-radius: 12px;
+    background-color: #F9F6EE;
+    text-align: center;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.4s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+/* Apply 3D effect only when file is not selected */
+.splitter-container.no-rotate {
+    transform: perspective(1000px) rotateY(0deg);
+}
+
+.splitter-container:hover:not(.no-rotate) {
+    transform: perspective(1000px) rotateY(10deg);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2); 
+}
+
+.title {
+    margin-bottom: 20px;
+    font-size: 24px;
+    color: #333;
+}
+
+.file-input {
+    padding: 8px;
+    margin-bottom: 15px;
+    border-radius: 6px;
+}
+
+.input-group {
+    margin-bottom: 15px;
+}
+
+.number-input {
+    padding: 6px;
+    margin-left: 10px;
+    width: 100px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+}
+
+.split-button,
+.download-button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 16px;
+    margin-top: 10px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.split-button:disabled {
+    background-color: #aaa; 
+    cursor: not-allowed;
+}
+
+.split-button:hover:not(:disabled),
+.download-button:hover {
+    background-color: #0056b3;
+    transform: scale(1.1); 
+}
+
+.split-button:active,
+.download-button:active {
+    transform: scale(0.9); 
+}
+
+.result-box {
+    margin-top: 25px;
+    padding-top: 10px;
+}
