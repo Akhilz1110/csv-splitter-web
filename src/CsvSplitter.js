@@ -5,9 +5,9 @@ import { saveAs } from "file-saver";
 
 const CsvSplitter = () => {
   const [file, setFile] = useState(null);
-  const [splitSize, setSplitSize] = useState("");
+  const [splitSize] = useState(100000);  // Set default value to 100000
   const [chunks, setChunks] = useState([]);
-  const [isFileSelected, setIsFileSelected] = useState(false); 
+  const [isFileSelected, setIsFileSelected] = useState(false);
 
   const handleFileChange = (e) => {
     setFile(e.target.files[0]);
@@ -19,7 +19,7 @@ const CsvSplitter = () => {
     if (!file || !splitSize || Number(splitSize) <= 0) {
       alert("Please set a valid row count.");
       return;
-    } 
+    }
 
     const reader = new FileReader();
     reader.onload = function (e) {
@@ -57,22 +57,11 @@ const CsvSplitter = () => {
 
       <input type="file" accept=".csv" onChange={handleFileChange} className="file-input" />
 
-      <div className="input-group">
-        <label>
-          Rows per file:
-          <input
-            type="number"
-            value={splitSize}
-            onChange={(e) => setSplitSize(e.target.value)}
-            disabled={!file}
-            className="number-input"
-          />
-        </label>
-      </div>
+      <p>Rows per file: {splitSize}</p>  {/* Display the default value */}
 
       <button
         onClick={handleSplit}
-        disabled={!file || !splitSize}
+        disabled={!file}
         className="split-button"
       >
         Split CSV
