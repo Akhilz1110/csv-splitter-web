@@ -1,4 +1,4 @@
-import './CsvSplitter.css';
+
 import React, { useState } from "react";
 import JSZip from "jszip";
 import { saveAs } from "file-saver";
@@ -47,7 +47,7 @@ const CsvSplitter = () => {
     });
 
     zip.generateAsync({ type: "blob" }).then((content) => {
-      saveAs(content, "csv_spliter_file.zip");
+      saveAs(content, "csv_splitter_file.zip");
     });
   };
 
