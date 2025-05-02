@@ -47,7 +47,7 @@ const CsvSplitter = () => {
     });
 
     zip.generateAsync({ type: "blob" }).then((content) => {
-      saveAs(content, "csv_chunks.zip");
+      saveAs(content, "csv_spliter_file.zip");
     });
   };
 
