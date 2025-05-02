@@ -1,11 +1,10 @@
-
 import React, { useState } from "react";
 import JSZip from "jszip";
 import { saveAs } from "file-saver";
 
 const CsvSplitter = () => {
   const [file, setFile] = useState(null);
-  const [splitSize] = useState(100000);  // Set default value to 100000
+  const [splitSize] = useState(100000);
   const [chunks, setChunks] = useState([]);
   const [isFileSelected, setIsFileSelected] = useState(false);
 
@@ -52,25 +51,36 @@ const CsvSplitter = () => {
   };
 
   return (
-    <div className={`splitter-container ${isFileSelected ? 'no-rotate' : ''}`}>
+    <div
+      className={`splitter-container ${isFileSelected ? "no-rotate" : ""}`}
+      style={{
+        marginLeft: "50px",
+        marginTop: "40px",
+        maxWidth: "300px",
+        textAlign: "start",
+      }}
+    >
       <h2 className="title">CSV Splitter</h2>
 
-      <input type="file" accept=".csv" onChange={handleFileChange} className="file-input" />
+      <input
+        type="file"
+        accept=".csv"
+        onChange={handleFileChange}
+        className="file-input"
+      />
 
-      <p>Rows per file: {splitSize}</p>  {/* Display the default value */}
+      <p>Rows per file: {splitSize}</p>
 
-      <button
-        onClick={handleSplit}
-        disabled={!file}
-        className="split-button"
-      >
+      <button onClick={handleSplit} disabled={!file} className="split-button">
         Split CSV
       </button>
 
       {chunks.length > 0 && (
         <div className="result-box">
           <h4>{chunks.length} files will be zipped</h4>
-          <button className="download-button" onClick={downloadZip}>Download ZIP</button>
+          <button className="download-button" onClick={downloadZip}>
+            Download ZIP
+          </button>
         </div>
       )}
     </div>
